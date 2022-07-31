@@ -13,7 +13,9 @@ namespace BankHandWatch.BusinessLogicLayer.Validators
         public WatchValidator()
         {
             RuleFor(x => x.Color).NotEmpty().MinimumLength(3);
-            RuleFor(x => x.CustomerId).NotEmpty();
+
+           // RuleFor(x => x.CustomerId).NotEmpty();
+
             RuleFor(x => x.ExpireTime).NotNull().Must(ValidDate).WithMessage("Date is Expire"); ;
         }
 

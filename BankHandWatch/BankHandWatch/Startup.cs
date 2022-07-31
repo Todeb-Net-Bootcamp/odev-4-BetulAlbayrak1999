@@ -1,3 +1,7 @@
+using BankHandWatch.BusinessLogicLayer.Abstracts;
+using BankHandWatch.BusinessLogicLayer.Concretes;
+using BankHandWatch.DataAccessLayer.Abstracts;
+using BankHandWatch.DataAccessLayer.Concretes;
 using BankHandWatch.DataAccessLayer.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -31,6 +35,14 @@ namespace BankHandWatch
 
             services.AddControllers();
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
+
+            services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
+            services.AddTransient<ICustomerRepository, CustomerRepository>();
+            services.AddTransient<ICustomerService, CustomerService>();
+
+            
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddSwaggerGen(c =>
             {

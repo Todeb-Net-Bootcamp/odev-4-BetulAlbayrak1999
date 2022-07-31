@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace BankHandWatch.DataAccessLayer.Concretes
 {
-    public class Repository<T> : IRepository<T> where T : class
+    public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         private readonly ApplicationDbContext _context;
-        DbSet<T> _object;
+        private readonly DbSet<T> _object;
 
-        public Repository(ApplicationDbContext context)
+        public GenericRepository(ApplicationDbContext context)
         {
             _context = context;
             _object = _context.Set<T>();
@@ -23,9 +23,6 @@ namespace BankHandWatch.DataAccessLayer.Concretes
         public async Task<bool> Create(T item)
         {
             try{
-                if (item == null)
-                    return false;
-
                 _object.Add(item);
                 await _context.SaveChangesAsync();
                 return true;
@@ -37,17 +34,11 @@ namespace BankHandWatch.DataAccessLayer.Concretes
         {
             try
             {
-                if (item == null)
-                    return false;
-
                 _object.Remove(item);
                 await _context.SaveChangesAsync();
                 return true;
             }
-            catch (Exception ex) 
-            {
-                return false;
-            }
+            catch (Exception ex) { return false; }
         }
 
         public async Task<IEnumerable<T>> GetAll()
@@ -66,9 +57,8 @@ namespace BankHandWatch.DataAccessLayer.Concretes
         {
             try
             {
-                if(Id != 0)
-                    return await _object.FindAsync(Id);
-                return null;
+                 return await _object.FindAsync(Id);
+                
             }
             catch (Exception ex) 
             {
@@ -80,17 +70,11 @@ namespace BankHandWatch.DataAccessLayer.Concretes
         {
             try
             {
-                if (item == null)
-                    return false;
-
                 _object.Update(item);
                 await _context.SaveChangesAsync();
                 return true;
             }
-            catch (Exception ex)
-            {
-                return false;
-            }
+            catch (Exception ex) { return false; }
         }
     }
 }

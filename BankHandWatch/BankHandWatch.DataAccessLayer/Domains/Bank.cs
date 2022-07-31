@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BankHandWatch.DataAccessLayer.Domains
 {
-    public class Bank: BaseEntityNoIdentity
+    public class Bank: BaseEntity
     {
         public string Name { get; set; }
         public virtual ICollection<Branch> Branches { get; set; }

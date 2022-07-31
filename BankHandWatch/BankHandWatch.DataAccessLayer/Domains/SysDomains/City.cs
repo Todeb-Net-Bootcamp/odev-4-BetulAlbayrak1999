@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BankHandWatch.DataAccessLayer.Domains.SysDomains
 {
-    public class City: BaseEntityNoIdentity
+    public class City: BaseEntity
     {
         public string Name { get; set; }
 

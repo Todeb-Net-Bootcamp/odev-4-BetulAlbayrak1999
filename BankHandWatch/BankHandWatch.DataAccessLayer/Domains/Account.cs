@@ -8,13 +8,15 @@ using System.Threading.Tasks;
 
 namespace BankHandWatch.DataAccessLayer.Domains
 {
-    public class Account: BaseEntityNoIdentity
+    public class Account: BaseEntity
     {
         public string Iban { get; set; }
         public string AccountNo { get; set; }
 
+        /*
         public int CustomerId { get; set; }
-        public virtual Customer Customer { get; set; }
+        [ForeignKey(nameof(CustomerId))]
+        public virtual Customer Customer { get; set; }*/
 
         public string AccountType { get; set; }
 

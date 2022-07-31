@@ -14,8 +14,6 @@ namespace BankHandWatch.BusinessLogicLayer.Validators
         {
             RuleFor(x => x.CityId).NotEmpty();
 
-            RuleFor(x => x.RegionId).NotEmpty();
-
             RuleFor(x => x.Street).NotEmpty().MinimumLength(3);
 
             RuleFor(x => x.PostalCode).NotEmpty().Length(5);

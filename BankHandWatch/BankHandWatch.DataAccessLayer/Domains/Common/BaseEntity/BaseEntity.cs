@@ -8,10 +8,9 @@ using System.Threading.Tasks;
 
 namespace BankHandWatch.DataAccessLayer.Domains.Common.BaseEntity
 {
-    public abstract class BaseEntityNoIdentity : IBaseEntity
+    public abstract class BaseEntity : IBaseEntity
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        
         public int Id { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime LastModifiedDate { get; set; }

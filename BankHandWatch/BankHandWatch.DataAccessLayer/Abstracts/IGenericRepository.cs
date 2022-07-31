@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BankHandWatch.DataAccessLayer.Abstracts
 {
-    public interface IRepository<T> where T : class
+    public interface IGenericRepository<T> where T : class
     {
         public Task<bool> Create(T item);
 

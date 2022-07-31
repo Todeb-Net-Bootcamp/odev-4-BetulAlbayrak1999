@@ -9,17 +9,13 @@ using System.Threading.Tasks;
 
 namespace BankHandWatch.DataAccessLayer.Domains
 {
-    public class Location : BaseEntityNoIdentity
+    public class Location : BaseEntity
     {
         public int CityId { get; set; }
 
         [ForeignKey(nameof(CityId))]
         public virtual City City { get; set; }
 
-
-        public int RegionId { get; set; }
-        [ForeignKey(nameof(RegionId))]
-        public virtual Region Region { get; set; }
 
         public virtual Branch Branch { get; set; }
 

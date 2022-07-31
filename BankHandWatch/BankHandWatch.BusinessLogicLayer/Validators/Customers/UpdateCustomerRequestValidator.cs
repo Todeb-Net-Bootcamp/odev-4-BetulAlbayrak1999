@@ -1,4 +1,4 @@
-﻿using BankHandWatch.DataAccessLayer.Domains;
+﻿using BankHandWatch.BusinessLogicLayer.Dtos;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BankHandWatch.BusinessLogicLayer.Validators
+namespace BankHandWatch.BusinessLogicLayer.Validators.Customers
 {
-    public class PersonValidator : AbstractValidator<Person>
+    public class UpdateCustomerRequestValidator : AbstractValidator<UpdateCustomerRequest>
     {
-        public PersonValidator()
+        public UpdateCustomerRequestValidator()
         {
             RuleFor(x => x.FirstName).NotEmpty().MinimumLength(3);
 
@@ -24,7 +24,7 @@ namespace BankHandWatch.BusinessLogicLayer.Validators
 
             RuleFor(x => x.Birthdate).NotEmpty();
 
-            RuleFor(x => x.BranchId).NotEmpty();
+            RuleFor(x => x.Password).NotEmpty().MinimumLength(8);
         }
     }
 }

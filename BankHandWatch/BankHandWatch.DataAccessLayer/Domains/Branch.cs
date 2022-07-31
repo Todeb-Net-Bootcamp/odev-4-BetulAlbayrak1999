@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BankHandWatch.DataAccessLayer.Domains
 {
-    public class Branch : BaseEntityNoIdentity
+    public class Branch : BaseEntity
     {
         public int BankId { get; set; }
 
@@ -16,9 +16,10 @@ namespace BankHandWatch.DataAccessLayer.Domains
         public virtual Bank Bank { get; set; }
 
         public int LocationId { get; set; }
+        [ForeignKey(nameof(LocationId))]
         public virtual Location Location { get; set; }
 
-        public virtual ICollection<Customer> Customers { get; set; }
+        /*public virtual ICollection<Customer> Customers { get; set; }*/
         public virtual ICollection<Employee> Employees { get; set; }
 
     }

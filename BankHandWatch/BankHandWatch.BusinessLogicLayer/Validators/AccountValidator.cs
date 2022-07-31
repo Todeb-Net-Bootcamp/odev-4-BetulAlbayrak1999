@@ -16,7 +16,7 @@ namespace BankHandWatch.BusinessLogicLayer.Validators
 
             RuleFor(x => x.AccountNo).NotNull().Length(12);
 
-            RuleFor(x => x.CustomerId).NotNull();
+           // RuleFor(x => x.CustomerId).NotNull();
 
             RuleFor(x => x.CurrentBalance).GreaterThanOrEqualTo(0);
 
